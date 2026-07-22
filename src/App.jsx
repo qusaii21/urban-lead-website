@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import NavBar from "./components/Navbar";
 import Preloader from "./components/Preloader";
@@ -14,6 +14,17 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import WebDevelopment from "./pages/WebDevelopment";
 import CreativeGrowth from "./pages/CreativeGrowth";
+
+/* ── Scroll To Top Helper ───────────────────────────────────── */
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 /* ── Home page assembled inline ─────────────────────────────── */
 const Home = ({ preloaderDone }) => (
@@ -35,6 +46,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       {!preloaderDone && (
         <Preloader
           onComplete={() => {
