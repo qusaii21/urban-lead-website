@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
+import { Link } from "react-router-dom";
 
 import Button from "./Button";
 
@@ -71,7 +72,9 @@ const NavBar = () => {
         <nav className="flex size-full items-center justify-between p-4">
           {/* Logo and Product button */}
           <div className="flex items-center gap-7">
-            <img src="/img/logo.png" alt="logo" className="w-16 h-auto" />
+            <Link to="/">
+              <img src="/img/logo.png" alt="logo" className="w-16 h-auto" />
+            </Link>
 
             <Button
               id="product-button"
@@ -87,7 +90,7 @@ const NavBar = () => {
               {navItems.map((item, index) => (
                 <a
                   key={index}
-                  href={`#${item.toLowerCase()}`}
+                  href={`/#${item.toLowerCase()}`}
                   className="nav-hover-btn"
                 >
                   {item}

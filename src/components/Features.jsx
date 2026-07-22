@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { TiLocationArrow } from "react-icons/ti";
+import { Link } from "react-router-dom";
 
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
@@ -38,7 +39,7 @@ export const BentoTilt = ({ children, className = "" }) => {
   );
 };
 
-export const BentoCard = ({ src, title, description, isComingSoon }) => {
+export const BentoCard = ({ src, title, description, isComingSoon, href }) => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [hoverOpacity, setHoverOpacity] = useState(0);
   const hoverButtonRef = useRef(null);
@@ -55,6 +56,27 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
 
   const handleMouseEnter = () => setHoverOpacity(1);
   const handleMouseLeave = () => setHoverOpacity(0);
+
+  const pill = (
+    <div
+      ref={hoverButtonRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={clsxPill(href)}
+    >
+      {/* Radial gradient hover effect */}
+      <div
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+        style={{
+          opacity: hoverOpacity,
+          background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
+        }}
+      />
+      <TiLocationArrow className="relative z-20" />
+      <p className="relative z-20">{href ? "view service" : "coming soon"}</p>
+    </div>
+  );
 
   return (
     <div className="relative size-full">
@@ -73,30 +95,17 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
           )}
         </div>
 
-        {isComingSoon && (
-          <div
-            ref={hoverButtonRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white/20"
-          >
-            {/* Radial gradient hover effect */}
-            <div
-              className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
-              style={{
-                opacity: hoverOpacity,
-                background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
-              }}
-            />
-            <TiLocationArrow className="relative z-20" />
-            <p className="relative z-20">coming soon</p>
-          </div>
-        )}
+        {isComingSoon && (href ? <Link to={href}>{pill}</Link> : pill)}
       </div>
     </div>
   );
 };
+
+// Coming-soon pill stays dim; a real "view service" pill is bright and inviting
+const clsxPill = (href) =>
+  href
+    ? "border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white transition-colors hover:border-white/40"
+    : "border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white/20";
 
 const Features = () => (
   <section className="bg-black pb-52 pt-24">
@@ -112,6 +121,7 @@ const Features = () => (
           }
           description="Responsive websites, landing pages, e-commerce platforms, and custom web applications — engineered for performance and built to convert."
           isComingSoon
+          href="/services/web-development"
         />
       </BentoTilt>
 
@@ -134,11 +144,12 @@ const Features = () => (
             src="videos/feature-3.mp4"
             title={
               <>
-                s<b>e</b>o
+                cr<b>e</b>ative grow<b>t</b>h
               </>
             }
-            description="Search engine optimization, Google Ads, PPC campaigns, and conversion strategy — driving qualified traffic that grows your revenue."
+            description="Branding, social media, and digital marketing combined into a unified creative growth system."
             isComingSoon
+            href="/services/social-media-marketting"
           />
         </BentoTilt>
 

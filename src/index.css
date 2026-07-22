@@ -881,3 +881,56 @@ body {
     font-size: clamp(2.8rem, 10vw, 5rem);
   }
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   WEB DEVELOPMENT PAGE — MARQUEE + HERO ANIMATIONS
+   ══════════════════════════════════════════════════════════════════ */
+
+/* fadeIn used by hero section on /services/web-development */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Tech-stack marquee ticker */
+.wd-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.wd-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: wd-scroll 28s linear infinite;
+}
+
+.wd-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.wd-marquee-item {
+  flex-shrink: 0;
+  padding: 0 48px;
+  font-family: "zentry", sans-serif;
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.04em;
+  transition: color 0.25s ease;
+}
+
+.wd-marquee-item:hover {
+  color: #D4AF37;
+}
+
+@keyframes wd-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.faq-left-title .flex-center {
+  justify-content: flex-start !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
