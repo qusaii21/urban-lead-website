@@ -114,8 +114,10 @@ const AboutPage = () => {
               title="A Legacy of Trust <br /> and Innovation."
               containerClass="special-font !text-5xl md:!text-7xl font-zentry !leading-[0.9] text-white"
             />
-            <p className="mt-8 max-w-xl font-robert-regular text-sm md:text-base leading-relaxed text-white/50">
-              Urban Lead is proud to belong in the **Seven Wonders Electronics Trading LLC Group**, sharing a decade-long reputation of service excellence across the UAE.
+            <p className="mt-8 max-w-xl font-robert-regular text-sm md:text-base leading-relaxed text-white/50 text-center mx-auto">
+              Urban Lead is proud to belong in the{" "}
+              <span className="text-[#D4AF37] font-semibold">Seven Wonders Electronics Trading LLC Group</span>,
+              sharing a decade-long reputation of service excellence across the UAE.
             </p>
           </Reveal>
         </div>
@@ -143,12 +145,12 @@ const AboutPage = () => {
                 <div className="flex flex-col gap-4">
                   {/* Mock Brand Logo Plate */}
                   <div className="w-fit border border-[#D4AF37]/35 bg-[#D4AF37]/5 px-4 py-2 rounded-xl text-center">
-  <img 
-    src="/public/img/seven-wonders-logo.png" 
-    alt="Seven Wonders Logo" 
-    className="h-8 w-auto object-contain"
-  />
-</div>
+                    <img 
+                      src="/img/seven-wonders-logo.png" 
+                      alt="Seven Wonders Logo" 
+                      className="h-8 w-auto object-contain"
+                    />
+                  </div>
                   <a 
                     href="https://sevenwonder.ae/" 
                     target="_blank" 
@@ -184,53 +186,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* ── OUR FOUNDERS ─────────────────────────────────────────────── */}
-      <section className="py-24 px-4 md:px-10 max-w-6xl mx-auto border-b border-white/5">
-        <div className="grid gap-12 md:grid-cols-12 items-center">
-          
-          <div className="md:col-span-4 flex flex-col justify-center">
-            <Reveal>
-              <p className="font-general text-[10px] uppercase tracking-[0.28em] text-[#D4AF37] mb-2">Executive Leadership</p>
-              <h3 className="font-circular-web text-4xl font-bold">Our Founders</h3>
-              <p className="font-robert-regular text-sm text-white/50 mt-4 leading-relaxed">
-                Combining 30 years of industry experience to scale business solutions in multiple directions across the Middle East.
-              </p>
-            </Reveal>
-          </div>
-
-          <div className="md:col-span-8 bg-[#050507] border border-white/10 p-8 md:p-10 rounded-3xl relative overflow-hidden shadow-2xl">
-            <div className="absolute top-0 right-0 size-48 bg-[#D4AF37]/5 rounded-full blur-2xl" />
-            <Reveal>
-              <h4 className="font-circular-web text-lg font-semibold text-white/80">Mr. Saleem Abdul Latheef & Mr. Burhan Mohshin</h4>
-              <p className="font-general text-[9px] uppercase tracking-widest text-[#D4AF37] mt-1">Group Directors & Founders</p>
-              <p className="font-robert-regular text-sm text-white/60 leading-relaxed mt-6">
-                "Mr. Saleem Abdul Latheef and Mr. Burhan Mohshin, founders of the group with 30 years of experience in the industry, expanded the business in many directions. With excellent after-sales services, our motto and aim remain the same: to offer the best prices and services to our valued regular and prospective customers."
-              </p>
-            </Reveal>
-
-            {/* Founders credentials widget */}
-            <div className="grid grid-cols-2 gap-4 mt-8 pt-6 border-t border-white/5">
-              <Reveal delay={0.05}>
-                <div className="flex items-center gap-3">
-                  <span className="flex size-8 items-center justify-center rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                    <LuAward className="text-sm" />
-                  </span>
-                  <span className="font-general text-[10px] uppercase tracking-widest text-white/50">30 Years Experience</span>
-                </div>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <div className="flex items-center gap-3">
-                  <span className="flex size-8 items-center justify-center rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400">
-                    <LuHeartHandshake className="text-sm" />
-                  </span>
-                  <span className="font-general text-[10px] uppercase tracking-widest text-white/50">Trusted After-Sales</span>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-
-        </div>
-      </section>
+     
 
       {/* ── CORE VALUES & HISTORY TIMELINE ───────────────────────────── */}
       <section className="py-24 px-4 md:px-10 max-w-7xl mx-auto">
