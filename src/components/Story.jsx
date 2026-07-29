@@ -1,27 +1,24 @@
 import gsap from "gsap";
 import { useRef, useState, useEffect } from "react";
-import Button from "./Button";
+import { Link } from "react-router-dom";
+import { LuArrowRight } from "react-icons/lu";
 import AnimatedTitle from "./AnimatedTitle";
 
 const SLIDES = [
   {
     src: "/img/gallery.jpeg",
-    title: "creative <b>m</b>inds <br /> shaping standard<b>s</b>",
-    label: "THE COLLECTIVE",
-    desc: "Designers, developers, and directors. A unified force building high-performance systems and brands.",
+    title: "53 a<b>c</b>res <br /> real estate gr<b>o</b>wth",
+    label: "REAL ESTATE CONSULTANCY",
+    desc: "How we shifted 53Acres Pune from direct sales to real estate education on Instagram, generating 21,000+ views and converting social attention into property leads.",
+    href: "/case-studies/53-acres"
   },
   {
     src: "/img/gallery-2.jpg",
-    title: "prot<b>o</b>typing <br /> the fut<b>u</b>re",
-    label: "THE SANDBOX",
-    desc: "Where we experiment, build prototypes, and stress-test architectures before they hit production.",
-  },
-  {
-    src: "/img/gallery-3.jpg",
-    title: "compounding <br /> brand trac<b>t</b>ion",
-    label: "THE SYNC",
-    desc: "Synchronized execution. Aligning product growth with market dynamics for compound returns.",
-  },
+    title: "aur<b>o</b>ra <br /> text<b>i</b>les",
+    label: "WHOLESALE FABRICS",
+    desc: "How we built a series-based fabric education campaign for Aurora Textiles Dubai, positioning them as trusted industry experts for wholesalers in African markets.",
+    href: "/case-studies/aurora-textiles"
+  }
 ];
 
 const Story = () => {
@@ -113,8 +110,8 @@ const Story = () => {
   return (
     <div id="story" className="min-h-dvh w-screen bg-black text-blue-50">
       <div className="flex size-full flex-col items-center py-10 pb-24">
-        <p className="font-general text-sm uppercase tracking-wider text-violet-50/70 md:text-[10px]">
-          inside the collective
+        <p className="font-general text-sm uppercase tracking-wider text-[#D4AF37] md:text-[10px] font-semibold">
+          Case Studies
         </p>
 
         <div className="relative size-full">
@@ -129,7 +126,7 @@ const Story = () => {
             {/* Left Hover Navigation Arrow */}
             <button
               onClick={handlePrev}
-              className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 z-20 flex size-12 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 hover:bg-white hover:text-black hover:border-white transition-all duration-300 cursor-pointer shadow-lg"
+              className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 z-20 flex size-12 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 hover:bg-white hover:text-black hover:border-white transition-all duration-300 pointer-events-auto cursor-pointer shadow-lg"
               aria-label="Previous slide"
             >
               ←
@@ -153,7 +150,7 @@ const Story = () => {
             {/* Right Hover Navigation Arrow */}
             <button
               onClick={handleNext}
-              className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 z-20 flex size-12 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 hover:bg-white hover:text-black hover:border-white transition-all duration-300 cursor-pointer shadow-lg"
+              className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 z-20 flex size-12 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 hover:bg-white hover:text-black hover:border-white transition-all duration-300 pointer-events-auto cursor-pointer shadow-lg"
               aria-label="Next slide"
             >
               →
@@ -163,15 +160,23 @@ const Story = () => {
 
         <div className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
           <div className="flex h-full w-fit flex-col items-center md:items-start">
-            <p className="font-general text-xs uppercase tracking-widest text-violet-50/40 mb-2">
+            <p className="font-general text-xs uppercase tracking-widest text-[#D4AF37]/80 mb-2">
               {SLIDES[currentIndex].label}
             </p>
             <p className="mt-3 max-w-sm text-center font-circular-web text-violet-50 md:text-start min-h-[72px]">
               {SLIDES[currentIndex].desc}
             </p>
 
-            {/* Progress indicators under description */}
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-6 flex flex-col sm:flex-row items-center gap-6 pointer-events-auto">
+              <Link 
+                to={SLIDES[currentIndex].href} 
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#D4AF37] px-5 py-2 text-[10px] font-general uppercase tracking-widest text-black font-bold hover:bg-white hover:scale-105 transition-all duration-300"
+              >
+                <span>Read Case Study</span>
+                <LuArrowRight className="text-xs" />
+              </Link>
+              
+              {/* Progress indicators */}
               <div className="flex gap-2">
                 {SLIDES.map((_, i) => (
                   <div

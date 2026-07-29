@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="w-screen bg-[#dfdff0] py-12 text-black">
@@ -14,7 +16,7 @@ const Footer = () => {
           <p>© {new Date().getFullYear()} Urban Lead. All rights reserved.</p>
           
           <div className="flex flex-wrap justify-center gap-6">
-            <a href="#about" className="hover:text-black transition-colors">About Us</a>
+            <Link to="/about" className="hover:text-black transition-colors">About Us</Link>
             <a href="#privacy" className="hover:text-black transition-colors">Privacy Policy</a>
             <a href="#terms" className="hover:text-black transition-colors">Terms of Service</a>
           </div>

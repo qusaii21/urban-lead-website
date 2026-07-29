@@ -8,34 +8,44 @@ gsap.registerPlugin(ScrollTrigger);
 
 // ─── Board dimensions & card data ─────────────────────────────────────────────
 const BOARD_W = 1400;
-const BOARD_H = 3500;
+const BOARD_H = 3100;
 const CARD_W  = 560;
 const CARD_H  = 280;
 
 const MILESTONES = [
   {
     id: "website", cy: 500, side: "right",
-    num: "01", category: "Website Development",
+    num: "01", category: "Web Development",
     before: "No Website?",
     beforeSub: "Brand invisible online.",
-    afterCat: "Website Development",
-    after: "Website Development",
+    afterCat: "Web Development",
+    after: "Web Development",
     afterSub: "Fast, modern websites built to convert.",
     link: "/services/development"
   },
   {
-    id: "brand", cy: 900, side: "left",
-    num: "02", category: "Branding",
-    before: "No Brand Identity?",
-    beforeSub: "Lost inside the noise.",
-    afterCat: "Branding",
-    after: "Branding",
-    afterSub: "Build a brand people remember.",
-    link: "/services/social-media-marketting"
+    id: "mobile", cy: 900, side: "left",
+    num: "02", category: "App Development",
+    before: "Need an App?",
+    beforeSub: "No direct mobile channel.",
+    afterCat: "App Development",
+    after: "App Development",
+    afterSub: "Beautiful apps for every device.",
+    link: "/services/development"
   },
   {
-    id: "marketing", cy: 1300, side: "right",
-    num: "03", category: "Digital Marketing",
+    id: "crm", cy: 1300, side: "right",
+    num: "03", category: "CRMs and Automation",
+    before: "Too Much Manual Work?",
+    beforeSub: "Legacy spreadsheets, missed sales leads.",
+    afterCat: "CRMs and Automation",
+    after: "CRMs and Automation",
+    afterSub: "Automate your business, not your effort.",
+    link: "/services/crm-automation"
+  },
+  {
+    id: "marketing", cy: 1700, side: "left",
+    num: "04", category: "Digital Marketing",
     before: "Not Getting Leads?",
     beforeSub: "No customer acquisition channels.",
     afterCat: "Digital Marketing",
@@ -44,44 +54,24 @@ const MILESTONES = [
     link: "/services/social-media-marketting"
   },
   {
-    id: "social", cy: 1700, side: "left",
-    num: "04", category: "Social Media",
+    id: "brand", cy: 2100, side: "right",
+    num: "05", category: "Branding",
+    before: "No Brand Identity?",
+    beforeSub: "Lost inside the noise.",
+    afterCat: "Branding",
+    after: "Branding",
+    afterSub: "Build a brand people remember.",
+    link: "/services/social-media-marketting"
+  },
+  {
+    id: "social", cy: 2500, side: "left",
+    num: "06", category: "Social Media Strategy",
     before: "No Online Presence?",
     beforeSub: "No organic reach or community.",
-    afterCat: "Social Media",
-    after: "Social Media",
+    afterCat: "Social Media Strategy",
+    after: "Social Media Strategy",
     afterSub: "Stay visible. Stay relevant.",
     link: "/services/social-media-marketting"
-  },
-  {
-    id: "mobile", cy: 2100, side: "right",
-    num: "05", category: "Mobile App Development",
-    before: "Need an App?",
-    beforeSub: "No direct mobile channel.",
-    afterCat: "Mobile App Development",
-    after: "Mobile App Development",
-    afterSub: "Beautiful apps for every device.",
-    link: "/services/development"
-  },
-  {
-    id: "video", cy: 2500, side: "left",
-    num: "06", category: "Video Editing",
-    before: "Need Better Content?",
-    beforeSub: "Operating blindly without visual hooks.",
-    afterCat: "Video Editing",
-    after: "Video Editing",
-    afterSub: "Content that captures attention.",
-    link: "/services/social-media-marketting"
-  },
-  {
-    id: "crm", cy: 2900, side: "right",
-    num: "07", category: "CRM & Automation",
-    before: "Too Much Manual Work?",
-    beforeSub: "Legacy spreadsheets, missed sales leads.",
-    afterCat: "CRM & Automation",
-    after: "CRM & Automation",
-    afterSub: "Automate your business, not your effort.",
-    link: "/services/development"
   },
 ];
 
@@ -104,20 +94,19 @@ const PATH = `
   L 1040,2170 Q 1040,2200 1010,2200 L 730,2200 Q 700,2200 700,2230
   L 700,2370 Q 700,2400 670,2400 L 390,2400 Q 360,2400 360,2430
   L 360,2570 Q 360,2600 390,2600 L 670,2600 Q 700,2600 700,2630
-  L 700,2770 Q 700,2800 730,2800 L 1010,2800 Q 1040,2800 1040,2830
-  L 1040,2970 Q 1040,3000 1010,3000 L 700,3000
-  M 580,3080
-  L 580,3200
-  A 50,50 0 0,0 680,3200
-  L 680,3100
-  Q 680,3080 700,3080
-  L 760,3080
-  Q 780,3080 780,3100
-  L 780,3220
-  Q 780,3250 810,3250
-  L 920,3250
-  M 970,3250
-  L 970.1,3250
+  L 700,2650
+  M 580,2680
+  L 580,2800
+  A 50,50 0 0,0 680,2800
+  L 680,2700
+  Q 680,2680 700,2680
+  L 760,2680
+  Q 780,2680 780,2700
+  L 780,2820
+  Q 780,2850 810,2850
+  L 920,2850
+  M 970,2850
+  L 970.1,2850
 `.trim();
 
 // ─── 3D Editorial Vectors ──────────────────────────────────────────────────────
@@ -370,7 +359,7 @@ const PCBJourney = () => {
 
       // --- Phase 2: thread draws, dot moves, board pans (0.06 → 0.97) ---
       const drawObj = { p: 0 };
-      const cardScrollPositions = [0.10, 0.22, 0.35, 0.48, 0.61, 0.74, 0.87];
+      const cardScrollPositions = [0.10, 0.25, 0.40, 0.55, 0.70, 0.85];
 
       // Smooth board pan to each card's vertical centre
       tl.to(board, {
@@ -381,6 +370,7 @@ const PCBJourney = () => {
 
       cardScrollPositions.slice(1).forEach((t, i) => {
         const m       = MILESTONES[i + 1];
+        if (!m) return;
         const targetY = boardYToTranslate(m.cy);
         tl.to(board, {
           y: targetY,
@@ -390,7 +380,7 @@ const PCBJourney = () => {
       });
 
       // Final pan to ending
-      tl.to(board, { y: boardYToTranslate(3320), duration: 0.12, ease: "power2.inOut" }, 0.92);
+      tl.to(board, { y: boardYToTranslate(2920), duration: 0.12, ease: "power2.inOut" }, 0.92);
 
       // Continuous thread draw + dot movement
       tl.to(drawObj, {
@@ -533,7 +523,7 @@ const PCBJourney = () => {
             style={{
               position: "absolute",
               left: 700,
-              top: 3000,
+              top: 2600,
               transform: "translate(-50%, -50%)",
               zIndex: 5,
               width: 14,
@@ -581,24 +571,23 @@ const PCBJourney = () => {
 
                 {/* AFTER / Solution Composition */}
                 <div className={`pcb-after pcb-face flex items-center gap-8 ${m.side === "left" ? "flex-row-reverse text-right" : "flex-row"}`} style={{ opacity: 0 }}>
-                  {/* Left Side: Typography */}
-                  <div className="w-[48%] flex flex-col justify-center">
+                  {/* Left Side: Typography (Clickable) */}
+                  <Link
+                    to={m.link}
+                    className="w-[48%] flex flex-col justify-center pointer-events-auto hover:opacity-80 transition-opacity duration-300"
+                  >
                     <span className="font-general editorial-eyebrow">{m.before}</span>
                     <h2 className="special-font font-zentry editorial-title">{m.after}</h2>
-                    <p className="font-robert-regular editorial-desc mb-3">{m.afterSub}</p>
-                    <Link
-                      to={m.link}
-                      className="inline-flex w-fit items-center gap-1.5 rounded-full bg-[#D4AF37] px-4 py-1.5 text-[9px] font-general uppercase tracking-widest text-black font-bold hover:bg-white hover:scale-105 transition-all duration-300 pointer-events-auto"
-                    >
-                      <span>Explore</span>
-                      <LuArrowRight className="text-xs" />
-                    </Link>
-                  </div>
+                    <p className="font-robert-regular editorial-desc">{m.afterSub}</p>
+                  </Link>
                   
-                  {/* Right Side: Floating Premium 3D Art */}
-                  <div className={`w-[52%] flex items-center justify-center editorial-image-container float-style-${idx}`}>
+                  {/* Right Side: Floating Premium 3D Art (Clickable) */}
+                  <Link
+                    to={m.link}
+                    className={`w-[52%] flex items-center justify-center editorial-image-container float-style-${idx} pointer-events-auto hover:scale-105 transition-transform duration-300`}
+                  >
                     <EditorialImage id={m.id} />
-                  </div>
+                  </Link>
                 </div>
               </div>
             );
@@ -610,7 +599,7 @@ const PCBJourney = () => {
             style={{
               position: "absolute",
               left: 770,
-              top: 3340,
+              top: 2940,
               transform: "translateX(-50%)",
               textAlign: "center",
               opacity: 0,
@@ -632,7 +621,9 @@ const Storytelling = () => {
   return (
     <div className="storytelling-container">
       <ProblemIntro />
-      <PCBJourney />
+      <div className="hidden md:block">
+        <PCBJourney />
+      </div>
     </div>
   );
 };

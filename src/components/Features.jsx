@@ -111,78 +111,99 @@ const Features = () => (
   <section className="bg-black pb-52 pt-24">
     <div className="container mx-auto px-3 md:px-10">
 
+      {/* Section Title */}
+      <div className="mb-16">
+        <p className="font-general text-[10px] uppercase tracking-[0.3em] text-[#D4AF37] mb-3">
+          Explore Our Capabilities
+        </p>
+        <h2 className="special-font font-zentry text-5xl md:text-7xl font-black text-white uppercase leading-[0.8] tracking-tighter">
+          Our Services
+        </h2>
+      </div>
+
       <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
         <BentoCard
           src="videos/feature-1.mp4"
           title={
             <>
-              dev<b>e</b>lopme<b>n</b>t
+              web dev<b>e</b>lopme<b>n</b>t
             </>
           }
-          description="Bespoke web applications, native iOS/Android mobile apps, advanced search engine optimization (SEO), and Salesforce/HubSpot CRM data integrations."
+          description="High-performance websites, custom web apps, headless architectures, and lightning-fast speed optimization built to scale."
           isComingSoon
           href="/services/development"
         />
       </BentoTilt>
 
-      <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
-        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
+      <div className="flex flex-col w-full gap-7 h-auto md:grid md:grid-cols-2 md:grid-rows-3 md:gap-7 md:h-[135vh]">
+        <BentoTilt className="bento-tilt_1 h-96 md:h-full row-span-1 md:col-span-1 md:row-span-2">
           <BentoCard
             src="videos/feature-2.mp4"
             title={
               <>
-                ui/<b>u</b>x
+                app dev<b>e</b>lopme<b>n</b>t
               </>
             }
-            description="User research, wireframing, prototyping, and design systems — crafting digital experiences that are as intuitive as they are beautiful."
+            description="Native iOS & Android mobile applications built using Swift, Kotlin, Flutter, and React Native for modern mobile users."
             isComingSoon
+            href="/services/development"
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
+        <BentoTilt className="bento-tilt_1 h-96 md:h-full row-span-1 ms-0 md:col-span-1 md:ms-0">
           <BentoCard
             src="videos/feature-3.mp4"
             title={
               <>
-                cr<b>e</b>ative grow<b>t</b>h
+                digit<b>a</b>l mark<b>e</b>ting
               </>
             }
-            description="Branding, social media, and digital marketing combined into a unified creative growth system."
+            description="Hyper-targeted campaigns, advanced search engine optimization (SEO), and data-driven marketing flows that scale customer acquisition."
             isComingSoon
             href="/services/social-media-marketting"
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+        <BentoTilt className="bento-tilt_1 h-96 md:h-full me-0 md:col-span-1 md:me-0">
           <BentoCard
             src="videos/feature-4.mp4"
             title={
               <>
-                m<b>o</b>bile
+                br<b>a</b>nding
               </>
             }
-            description="iOS, Android, and cross-platform apps built with Flutter and React Native — fast, scalable, and ready for production."
+            description="Visual identity systems, logotypes, strategy guidelines, and premium design collateral built to leave a permanent mark."
             isComingSoon
+            href="/services/social-media-marketting"
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_2">
-          <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
-            <h1 className="bento-title special-font max-w-64 text-black">
-              Cr<b>m</b> & AI s<b>o</b>luti<b>o</b>ns.
-            </h1>
+        <BentoTilt className="bento-tilt_2 h-96 md:h-full">
+          <Link to="/services/crm-automation" className="flex size-full flex-col justify-between bg-[#dfdff0] p-5 text-black hover:bg-[#D4AF37] transition-all duration-500 pointer-events-auto rounded-md">
+            <div>
+              <h1 className="bento-title special-font max-w-64">
+                Cr<b>m</b>s & aut<b>o</b>mati<b>o</b>n
+              </h1>
+              <p className="mt-3 max-w-64 text-xs font-robert-regular text-black/70">
+                Automate sales funnels, link Salesforce & HubSpot databases, and eliminate repetitive manual tasks.
+              </p>
+            </div>
 
-            <TiLocationArrow className="m-5 scale-[5] self-end" />
-          </div>
+            <TiLocationArrow className="m-5 scale-[4] self-end text-black" />
+          </Link>
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_2">
-          <video
+        <BentoTilt className="bento-tilt_2 h-96 md:h-full">
+          <BentoCard
             src="videos/feature-5.mp4"
-            loop
-            muted
-            autoPlay
-            className="size-full object-cover object-center"
+            title={
+              <>
+                soci<b>a</b>l str<b>a</b>t<b>e</b>gy
+              </>
+            }
+            description="Viral organic reels, creator marketing partnerships, visual content studio production, and social audience scaling."
+            isComingSoon
+            href="/services/social-media-marketting"
           />
         </BentoTilt>
       </div>

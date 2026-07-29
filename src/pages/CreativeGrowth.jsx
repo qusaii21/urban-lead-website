@@ -30,6 +30,7 @@ import {
   FaPinterest 
 } from "react-icons/fa";
 import { FaMeta } from "react-icons/fa6";
+import { useLocation } from "react-router-dom";
 
 import Button from "../components/Button";
 import AnimatedTitle from "../components/AnimatedTitle";
@@ -70,38 +71,33 @@ const HERO_TITLE = "CREATIVE GROWTH".split("").map((c, i) => ({
 const SERVICES = [
   {
     title: "Strategy",
-    slogan: "WE ALIGN AUDIENCE INSIGHTS TO ESTABLISH YOUR BRAND DIRECTION.",
-    desc: "Using proprietary audience analytics and cultural trend mapping, we build a roadmap that sets your social presence apart. We design the identity blueprints that translate directly into market traction and permanent brand affinity.",
-    video: "/videos/feature-1.mp4",
-    video2: "/videos/feature-2.mp4"
-  },
-  {
-    title: "Discovery",
-    slogan: "WE IDENTIFY THE RIGHT CREATORS AND INFLUENCERS FOR EVERY ELEMENT OF YOUR STRATEGY.",
-    desc: "Combining our proprietary data and campaigns team's unrivaled knowledge, we'll identify the creators that align with your brand's values and media objectives. From micro-influencers to mainstream scale.",
-    video: "/videos/feature-2.mp4",
-    video2: "/videos/feature-3.mp4"
+    slogan: "WE BUILD YOUR CONTENT ROADMAP AROUND REAL AUDIENCE DATA AND PLATFORM TRENDS.",
+    desc: "We start by auditing your current presence, researching your audience's behaviour, and mapping out what content formats are winning on each platform right now. From posting cadence and content pillars to tone-of-voice and visual identity — every decision is backed by data, not guesswork. You get a clear, actionable 30-60-90 day content plan built to grow.",
+    video: "/videos/strategy.mp4"
   },
   {
     title: "Content",
-    slogan: "WE DELIVER CAPTIVATING INFLUENCER CONTENT FOR ALL MEDIA PLACEMENTS.",
-    desc: "From cinematic reels to high-tempo TikTok hooks, our content studio produces assets engineered for organic velocity. We deliver creative direction that demands attention and keeps users scrolling.",
-    video: "/videos/feature-3.mp4",
-    video2: "/videos/feature-4.mp4"
+    slogan: "WE PRODUCE SCROLL-STOPPING SHORT-FORM VIDEO BUILT FOR TODAY'S ALGORITHMS.",
+    desc: "Reels, Shorts, TikToks — vertical video is the fastest way to reach new audiences organically in 2025. Our team handles everything: scripting with proven retention hooks, filming, editing with trending audio and motion graphics, and captioning for silent-scroll viewers. We don't just post content; we engineer it to perform.",
+    video: "/videos/content.mp4"
   },
   {
-    title: "Media",
-    slogan: "WE PUT INFLUENCER CONTENT IN MORE placements THAN ANY OTHER AGENCY IN THE WORLD.",
-    desc: "Amplifying organic wins with paid media boosts. We scale top-performing creative assets across paid ad platforms, targeting precision demographics to yield optimal customer acquisition costs.",
-    video: "/videos/feature-4.mp4",
-    video2: "/videos/feature-5.mp4"
+    title: "Trends",
+    slogan: "WE PLUG YOUR BRAND INTO CULTURAL MOMENTS BEFORE THEY PEAK.",
+    desc: "Trend cycles move fast. We monitor real-time signals across TikTok, Instagram, and YouTube — audio trends, visual formats, viral hooks — and adapt them to fit your brand before they saturate. Being early on a trend can put your content in front of hundreds of thousands of people organically. We make sure you're always ahead of the curve, not catching up to it.",
+    video: "/videos/trend.mp4"
   },
   {
-    title: "Commerce",
-    slogan: "WE HELP BRANDS TO DRIVE SALES THROUGH INFLUENCER-LED COMMERCE.",
-    desc: "Integrating shoppable feeds, social storefront setup, and live-shopping campaigns to turn attention directly into checkout events. Seamlessly combining entertainment and purchase flow.",
-    video: "/videos/feature-5.mp4",
-    video2: "/videos/feature-1.mp4"
+    title: "Paid Media",
+    slogan: "WE TURN YOUR BEST ORGANIC CONTENT INTO HIGH-CONVERTING PAID CAMPAIGNS.",
+    desc: "Great content earns attention. Paid media multiplies it. We run targeted ad campaigns on Meta, TikTok, and Google — using your best-performing organic posts as ad creative to keep costs low and engagement high. Precision audience targeting, A/B tested copy, and continuous optimisation mean your budget works harder every week.",
+    video: "/videos/media.mp4"
+  },
+  {
+    title: "Analytics",
+    slogan: "WE TRACK WHAT MATTERS AND CUT WHAT DOESN'T — EVERY SINGLE MONTH.",
+    desc: "Vanity metrics don't grow businesses. We deliver monthly performance reports that show you exactly what's driving reach, saves, profile visits, and enquiries — and what to do more of. We track platform algorithm changes, competitor benchmarks, and audience retention data so your content strategy evolves continuously instead of going stale.",
+    video: "/videos/analytics.mp4"
   }
 ];
 
@@ -113,7 +109,7 @@ const SOCIAL_CHANNELS = [
     slogan: "@brand.narrative",
     color: "#ec4899",
     metric: "4.8% Engagement Rate",
-    video: "/videos/feature-1.mp4",
+    video: "/videos/1.mp4",
     likes: "14.2K",
     comments: "382",
     theme: "radial-gradient(circle at top left, #833ab4, #fd1d1d, #fcb045)",
@@ -126,7 +122,7 @@ const SOCIAL_CHANNELS = [
     slogan: "@brand_velocity",
     color: "#a78bfa",
     metric: "12M Organic Reach",
-    video: "/videos/feature-2.mp4",
+    video: "/videos/2.mp4",
     likes: "45.8K",
     comments: "1.2K",
     theme: "linear-gradient(135deg, #00f2fe 0%, #fe0979 100%)",
@@ -139,7 +135,7 @@ const SOCIAL_CHANNELS = [
     slogan: "Brand Authority Co.",
     color: "#3b82f6",
     metric: "32% Lead Conversion",
-    video: "/videos/feature-3.mp4",
+    video: "/videos/3.mp4",
     likes: "842",
     comments: "124",
     theme: "linear-gradient(135deg, #0a66c2 0%, #004182 100%)",
@@ -152,7 +148,7 @@ const SOCIAL_CHANNELS = [
     slogan: "@brand_disrupt",
     color: "#38bdf8",
     metric: "+120k Retweets / mo",
-    video: "/videos/feature-4.mp4",
+    video: "/videos/4.mp4",
     likes: "3.4K",
     comments: "512",
     theme: "linear-gradient(135deg, #15202b 0%, #000000 100%)",
@@ -165,11 +161,37 @@ const SOCIAL_CHANNELS = [
     slogan: "Brand Immersive",
     color: "#ef4444",
     metric: "25min Avg. Watch Time",
-    video: "/videos/feature-5.mp4",
+    video: "/videos/5.mp4",
     likes: "92.1K",
     comments: "3.4K",
     theme: "linear-gradient(135deg, #ff0000 0%, #282828 100%)",
     glowColor: "#ef4444"
+  },
+  {
+    icon: LuShare2,
+    title: "Pinterest Video",
+    desc: "Aesthetic ideas & visual curation. Pinning high-intent visuals that guide shopping journeys.",
+    slogan: "@brand_pins",
+    color: "#e60023",
+    metric: "4.2M Monthly Viewers",
+    video: "/videos/6.mp4",
+    likes: "8.1K",
+    comments: "249",
+    theme: "linear-gradient(135deg, #e60023 0%, #bd081c 100%)",
+    glowColor: "#e60023"
+  },
+  {
+    icon: LuSparkles,
+    title: "Snapchat Spotlight",
+    desc: "Gen-Z focused snippets. Driving viral momentum on visual Spotlights and local feeds.",
+    slogan: "@brand_spotlight",
+    color: "#fffc00",
+    metric: "1.8M Active Users",
+    video: "/videos/7.mp4",
+    likes: "24.5K",
+    comments: "982",
+    theme: "linear-gradient(135deg, #fffc00 0%, #f1c40f 100%)",
+    glowColor: "#fffc00"
   }
 ];
 
@@ -240,26 +262,24 @@ const AccordionItem = ({ service, index, isActive, onClick }) => {
             </p>
           </div>
 
-          {/* Video Preview Reels Mockups */}
-          <div className="md:col-span-6 flex gap-4 overflow-x-auto justify-end py-2">
-            <div className="relative w-[200px] h-[350px] rounded-3xl overflow-hidden border-2 border-white/15 shrink-0 shadow-[0_15px_30px_rgba(0,0,0,0.8)]">
-              <video 
-                src={service.video} 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
-                className="absolute inset-0 size-full object-cover" 
-              />
-            </div>
-            <div className="relative w-[200px] h-[350px] rounded-3xl overflow-hidden border-2 border-white/15 shrink-0 hidden sm:block shadow-[0_15px_30px_rgba(0,0,0,0.8)] opacity-60">
-              <video 
-                src={service.video2} 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
-                className="absolute inset-0 size-full object-cover" 
+          {/* Video Preview */}
+          <div className="md:col-span-6 flex justify-center md:justify-end py-2">
+            <div className="relative w-[340px] h-[340px] shrink-0 overflow-hidden">
+              {/* push video up by ~40px to push watermark out of frame */}
+              <video
+                src={service.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute w-full object-cover"
+                style={{
+                  top: "-40px",
+                  bottom: "-40px",
+                  height: "calc(100% + 40px)",
+                  objectPosition: "center top",
+                  maskImage: "radial-gradient(ellipse 85% 85% at 50% 55%, black 40%, transparent 100%)"
+                }}
               />
             </div>
           </div>
@@ -281,7 +301,7 @@ const ServicesAccordionSection = () => {
         <Reveal className="mb-20">
           <Eyebrow>Core Capabilities</Eyebrow>
           <AnimatedTitle
-            title="What Services <br /> We Provide."
+            title="What We <br /> Provide You."
             containerClass="mt-4"
           />
         </Reveal>
@@ -289,7 +309,7 @@ const ServicesAccordionSection = () => {
         <div className="grid gap-16 md:grid-cols-12 md:items-start mt-10">
           
           {/* Left Column: Sticky Venn Diagram Circle indicator */}
-          <div className="md:col-span-5 md:sticky md:top-36 flex justify-center items-center py-10 md:py-24 self-start">
+          <div className="hidden md:flex md:col-span-5 md:sticky md:top-36 justify-center items-center py-10 md:py-24 self-start">
             <div className="relative w-96 h-96 scale-90 sm:scale-100">
               
               {/* Central base layout block circles */}
@@ -307,7 +327,7 @@ const ServicesAccordionSection = () => {
                 return (
                   <button 
                     key={idx}
-                    onClick={() => setActiveService(idx)}
+                    onClick={() => setActiveService(activeService === idx ? -1 : idx)}
                     className={`absolute size-32 rounded-full flex items-center justify-center font-zentry text-4xl font-black transition-all duration-500 border focus:outline-none ${pos.translate} ${
                       isActive 
                         ? "bg-[#ff4f12] border-[#ff4f12] text-black scale-110 z-20 shadow-[0_20px_45px_rgba(255,79,18,0.5)]" 
@@ -334,7 +354,7 @@ const ServicesAccordionSection = () => {
                 service={service} 
                 index={i} 
                 isActive={activeService === i}
-                onClick={() => setActiveService(i)}
+                onClick={() => setActiveService(activeService === i ? -1 : i)}
               />
             ))}
           </div>
@@ -674,24 +694,24 @@ const FAQSection = () => {
 
   const FAQS = [
     {
-      question: "How do you match brands with the right creators?",
-      answer: "We use our proprietary social database combined with manual audience affinity audits. We analyze creator demographics, engagement health, and brand alignment to ensure you only partner with creators who drive real conversion."
+      question: "How do you develop a content strategy for my brand?",
+      answer: "We start with a full audit of your existing presence, your competitors, and your audience's behaviour on each platform. From there we build a content calendar with defined pillars, posting frequency, and video formats that match current algorithm preferences. Everything is tailored to your business goals — whether that's awareness, leads, or sales."
     },
     {
-      question: "What platforms do you specialize in?",
-      answer: "We build tailored campaigns across TikTok, Instagram Reels, YouTube Shorts, LinkedIn Video, and Pinterest. We optimize the content formats specifically for the algorithms of each target channel."
+      question: "What platforms do you work across?",
+      answer: "We build content strategies for Instagram, TikTok, YouTube Shorts, LinkedIn, and Pinterest. Each platform has its own algorithm logic and audience behaviour — we adapt the content format, length, and tone specifically for where it's going to live."
     },
     {
-      question: "How do you measure campaign ROI?",
-      answer: "We track full-funnel metrics including brand impressions, organic reach, click-through rates, and direct attribution tracking."
+      question: "How do you measure whether the content is actually working?",
+      answer: "We track what actually moves the needle: reach, saves, profile visits, follower growth, and direct enquiries or link clicks. You get a monthly report that shows performance clearly and outlines what we're adjusting based on the data."
     },
     {
-      question: "What is your typical turnaround time for a campaign?",
-      answer: "A standard creator onboarding and content production cycle takes 3 to 4 weeks. For urgent cultural trends, our rapid-response studio can deliver native content assets within 72 hours."
+      question: "How quickly can you start producing content?",
+      answer: "Once we've aligned on strategy, our typical production cycle is 2 to 3 weeks for the first content batch. For trend-reactive content — where speed is everything — we can turn around optimised short-form videos within 48 to 72 hours."
     },
     {
-      question: "Do you handle paid media amplification?",
-      answer: "Yes, we combine organic influencer content with paid media boosts. We scale top-performing creative assets across paid ad platforms, targeting precision demographics to yield optimal customer acquisition costs."
+      question: "Do you run paid ads alongside organic content?",
+      answer: "Yes. When organic content is performing well, we amplify it with paid campaigns on Meta and TikTok to reach a larger, targeted audience. We handle the full setup — audience targeting, budget management, and ongoing optimisation — so your best content gets the reach it deserves."
     }
   ];
 
@@ -767,6 +787,115 @@ const HeroTypewriter = () => {
   );
 };
 
+/* ── Video Editing & Scripting Section ────────────────────────── */
+const VideoEditingSection = () => {
+  const shootItems = [
+    { label: "Format", value: "9:16 Vertical Capture" },
+    { label: "Resolution", value: "4K UHD @ 60 FPS" },
+    { label: "Audio", value: "Dual Lapel Noise Cancellation" },
+    { label: "Camera Gear", value: "Sony Alpha 7S III / FX3" },
+  ];
+
+  const scriptItems = [
+    { label: "0.0s - 3.0s", text: "The Hook - Grab attention within 3 seconds using retention-engineered visual and verbal loops." },
+    { label: "3.0s - 15.0s", text: "The Setup - Outline the core value proposition with high-paced visual demonstrations." },
+    { label: "15.0s - 45.0s", text: "The Evidence - Show social proof or interactive metrics to build credibility." },
+    { label: "45.0s - 60.0s", text: "The CTA - Direct users to a clickable link or form submission." },
+  ];
+
+  return (
+    <section id="video-editing" className="bg-[#050508] border-t border-white/5 py-28 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom_right,rgba(255,79,18,0.03)_0%,transparent_50%)] pointer-events-none" />
+      
+      <div className="container mx-auto px-4 md:px-10 max-w-7xl relative z-10">
+        
+        {/* Title */}
+        <div className="text-center mb-20">
+          <Eyebrow>Visual Content Studio</Eyebrow>
+          <AnimatedTitle
+            title="Video Editing <br /> & Scripting"
+            containerClass="mt-4"
+          />
+          <p className="mt-6 max-w-xl mx-auto font-robert-regular text-sm md:text-base text-white/50 leading-relaxed">
+            From creative scripting to professional camera shoots and high-tempo edits, we build short-form video systems designed for viral organic velocity.
+          </p>
+        </div>
+
+        {/* Content Bento Grid */}
+        <div className="grid gap-8 lg:grid-cols-12">
+          
+          {/* Card 1: Shoots (Col span 4) */}
+          <div className="lg:col-span-4 border border-white/10 bg-[#08080c] p-8 rounded-3xl relative overflow-hidden group hover:border-[#ff4f12]/30 transition-all duration-300">
+            <div className="absolute top-0 right-0 size-24 bg-[#ff4f12]/5 rounded-full blur-xl group-hover:bg-[#ff4f12]/10 transition-colors" />
+            <span className="font-general text-[9px] uppercase tracking-widest text-[#ff4f12] block mb-6">Phase 01 / Production</span>
+            <h3 className="font-circular-web text-2xl font-bold mb-4">Camera Shoots</h3>
+            <p className="font-robert-regular text-xs text-white/55 leading-relaxed mb-6">
+              Studio lighting, native vertical frame layouts, and premium audio capture that demands presence on social feeds.
+            </p>
+            
+            <div className="flex flex-col gap-3 pt-4 border-t border-white/5">
+              {shootItems.map((item, idx) => (
+                <div key={idx} className="flex justify-between items-center text-xs font-robert-regular">
+                  <span className="text-white/40">{item.label}</span>
+                  <span className="text-white/80 font-medium">{item.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Card 2: Scripting (Col span 5) */}
+          <div className="lg:col-span-5 border border-white/10 bg-[#08080c] p-8 rounded-3xl relative overflow-hidden group hover:border-[#ff4f12]/30 transition-all duration-300">
+            <div className="absolute top-0 right-0 size-24 bg-[#ff4f12]/5 rounded-full blur-xl group-hover:bg-[#ff4f12]/10 transition-colors" />
+            <span className="font-general text-[9px] uppercase tracking-widest text-[#ff4f12] block mb-6">Phase 02 / Copywriting</span>
+            <h3 className="font-circular-web text-2xl font-bold mb-4">Retention Scripts</h3>
+            <p className="font-robert-regular text-xs text-white/55 leading-relaxed mb-6">
+              Retention-engineered script blueprints outlining hook mechanics, narrative setups, and target conversion markers.
+            </p>
+
+            <div className="flex flex-col gap-4 pt-4 border-t border-white/5">
+              {scriptItems.map((item, idx) => (
+                <div key={idx} className="flex gap-4 items-start text-xs font-robert-regular">
+                  <span className="text-[#ff4f12] font-semibold shrink-0 w-20">{item.label}</span>
+                  <span className="text-white/70 leading-relaxed">{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Card 3: Video Edits (Col span 3) */}
+          <div className="lg:col-span-3 border border-white/10 bg-[#08080c] p-8 rounded-3xl relative overflow-hidden group hover:border-[#ff4f12]/30 transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div className="absolute top-0 right-0 size-24 bg-[#ff4f12]/5 rounded-full blur-xl group-hover:bg-[#ff4f12]/10 transition-colors" />
+              <span className="font-general text-[9px] uppercase tracking-widest text-[#ff4f12] block mb-6">Phase 03 / Post-Production</span>
+              <h3 className="font-circular-web text-2xl font-bold mb-4">Video Edits</h3>
+              <p className="font-robert-regular text-xs text-white/55 leading-relaxed mb-6">
+                High-tempo edits, colored color grades, kinetic text captions, and layered sound effects designed for infinite loops.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2 pt-4 border-t border-white/5 font-general text-[9px] uppercase tracking-widest text-white/40">
+              <div className="flex items-center gap-2">
+                <span className="size-1.5 rounded-full bg-[#ff4f12] inline-block" />
+                <span>Subtitles Engineering</span>
+              </div>
+              <div className="flex items-center gap-2 mt-1">
+                <span className="size-1.5 rounded-full bg-[#ff4f12] inline-block" />
+                <span>Velocity Curve Tuning</span>
+              </div>
+              <div className="flex items-center gap-2 mt-1">
+                <span className="size-1.5 rounded-full bg-[#ff4f12] inline-block" />
+                <span>Sub-bass SFX Balancing</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
 /* ────────────────────────────────────────────────────────────────────────
    MAIN PAGE
    ──────────────────────────────────────────────────────────────────────── */
@@ -795,6 +924,19 @@ const CreativeGrowth = () => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash === "#video-editing") {
+      const el = document.getElementById("video-editing");
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      }
+    }
+  }, [hash]);
 
   return (
     <div className="w-screen overflow-x-clip bg-black text-white">
@@ -888,6 +1030,9 @@ const CreativeGrowth = () => {
       <section className="bg-[#06060a] border-t border-white/5">
         <SocialCarousel3D />
       </section>
+
+      {/* ── VIDEO EDITING & SCRIPTING ───────────────────────────────── */}
+      <VideoEditingSection />
 
       {/* ── STRATEGIC PARTNERS ───────────────────────────────────────── */}
       <StrategicPartnersSection />

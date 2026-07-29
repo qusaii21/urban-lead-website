@@ -15,6 +15,11 @@ import Footer from "./components/Footer";
 import WebDevelopment from "./pages/WebDevelopment";
 import CreativeGrowth from "./pages/CreativeGrowth";
 import ContactPage from "./pages/ContactPage";
+import AboutPage from "./pages/AboutPage";
+import CrmAutomation from "./pages/CrmAutomation";
+import CaseStudiesPage from "./pages/CaseStudiesPage";
+import CaseStudy53Acres from "./pages/CaseStudy53Acres";
+import CaseStudyAurora from "./pages/CaseStudyAurora";
 
 /* ── Scroll To Top Helper ───────────────────────────────────── */
 const ScrollToTop = () => {
@@ -72,6 +77,11 @@ function App() {
           <Route path="/services/development" element={<WebDevelopment />} />
           <Route path="/services/social-media-marketting" element={<CreativeGrowth />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/services/crm-automation" element={<CrmAutomation />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
+          <Route path="/case-studies/53-acres" element={<CaseStudy53Acres />} />
+          <Route path="/case-studies/aurora-textiles" element={<CaseStudyAurora />} />
         </Routes>
       </main>
     </BrowserRouter>
