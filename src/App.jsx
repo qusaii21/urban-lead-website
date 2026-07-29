@@ -14,6 +14,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import WebDevelopment from "./pages/WebDevelopment";
 import CreativeGrowth from "./pages/CreativeGrowth";
+import ContactPage from "./pages/ContactPage";
 
 /* ── Scroll To Top Helper ───────────────────────────────────── */
 const ScrollToTop = () => {
@@ -68,8 +69,9 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home preloaderDone={preloaderDone} />} />
-          <Route path="/services/web-development" element={<WebDevelopment />} />
+          <Route path="/services/development" element={<WebDevelopment />} />
           <Route path="/services/social-media-marketting" element={<CreativeGrowth />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
     </BrowserRouter>

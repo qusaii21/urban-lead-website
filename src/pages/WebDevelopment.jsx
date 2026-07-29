@@ -39,6 +39,10 @@ import {
   SiGreensock,
   SiStripe,
   SiSanity,
+  SiFlutter,
+  SiSwift,
+  SiSalesforce,
+  SiHubspot,
 } from "react-icons/si";
 
 import Button from "../components/Button";
@@ -61,51 +65,23 @@ const IMPACT_STATS = [
     value: 53,
     suffix: "%",
     decimals: 0,
-    label: "of mobile visitors abandon a site that takes over 3 seconds to load.",
-  },
-  {
-    icon: LuEye,
-    color: "#38bdf8",
-    value: 0.05,
-    suffix: "s",
-    decimals: 2,
-    label: "is all it takes a visitor to form an opinion of your brand.",
-  },
-  {
-    icon: LuUserX,
-    color: "#a78bfa",
-    value: 88,
-    suffix: "%",
-    decimals: 0,
-    label: "won't come back to a site after one bad experience.",
-  },
-];
-
-const PROBLEM_FIX_PAIRS = [
-  {
-    icon: LuTimerOff,
-    problem: "Visitors bounce before the page even finishes loading.",
-    fix: "Sub-2-second load times, even on a slow connection.",
+    label: "of visitors leave a site that takes longer than 3 seconds to load.",
   },
   {
     icon: LuSmartphone,
-    problem: "It looks broken — or just embarrassing — on a phone.",
-    fix: "Pixel-perfect on every screen, from a 6\" phone to a 32\" monitor.",
+    color: "#38bdf8",
+    value: 90,
+    suffix: "%",
+    decimals: 0,
+    label: "of time spent on mobile happens inside apps, not the browser.",
   },
   {
     icon: LuEye,
-    problem: "Nobody can tell what you sell or why it matters, in 5 seconds.",
-    fix: "A homepage that states the offer clearly in one glance.",
-  },
-  {
-    icon: LuMousePointerClick,
-    problem: "There's no clear path from \"just looking\" to \"just bought.\"",
-    fix: "Conversion paths engineered around one goal: getting the click.",
-  },
-  {
-    icon: LuWrench,
-    problem: "Every small update means waiting on a developer who's gone quiet.",
-    fix: "A clean, editable build your team can actually maintain.",
+    color: "#a78bfa",
+    value: 93,
+    suffix: "%",
+    decimals: 0,
+    label: "of online journeys start with a search engine, not a direct visit.",
   },
 ];
 
@@ -113,43 +89,43 @@ const DELIVERABLES = [
   {
     icon: LuCode2,
     color: "#D4AF37",
-    title: "Custom Design & Build",
-    desc: "No templates or block-builders. Every layout is hand-drawn for your branding, then optimized to convert.",
+    title: "Web Apps & Sites",
+    desc: "Custom React and Next.js builds — fast, responsive, and coded by hand, not assembled from a template.",
     video: "/videos/feature-1.mp4",
   },
   {
     icon: LuSmartphone,
     color: "#38bdf8",
-    title: "Fully Responsive",
-    desc: "One codebase, fluidly responsive across desktops, tablets, and phones — tested on physical hardware.",
+    title: "iOS & Android Apps",
+    desc: "Native performance from a single React Native or Flutter codebase, wired directly into your phone's hardware.",
     video: "/videos/feature-5.mp4",
   },
   {
-    icon: LuGauge,
+    icon: LuTrendingUp,
     color: "#fb923c",
-    title: "Performance Optimization",
-    desc: "Asset optimization, lazy loading, and lightweight bundles ensuring top-tier Core Web Vitals.",
+    title: "Search Engine Optimization",
+    desc: "Schema markup, clean metadata, and page-speed tuning so Google finds you before your competitors do.",
     video: "/videos/feature-3.mp4",
   },
   {
-    icon: LuTrendingUp,
+    icon: LuLayers,
     color: "#34d399",
-    title: "SEO-Ready Architecture",
-    desc: "Semantic elements, automated meta setups, and correct site schema built in from day one.",
+    title: "CRM & Lead Routing",
+    desc: "Every signup, form, and lead event syncs straight into HubSpot or Salesforce — no manual exports.",
     video: "/videos/feature-4.mp4",
   },
   {
     icon: LuLayoutDashboard,
     color: "#a78bfa",
-    title: "Headless CMS & E-Commerce",
-    desc: "Shopify, WordPress, Sanity, or custom admin tools allowing your team to update copies without devs.",
+    title: "Content Management",
+    desc: "Update site copy, images, and in-app banners yourself through Shopify, Sanity, or a custom admin panel.",
     video: "/videos/feature-2.mp4",
   },
   {
     icon: LuLifeBuoy,
     color: "#22d3ee",
-    title: "Support & Security SLA",
-    desc: "Post-launch security patches, automatic backup procedures, and constant speed monitoring.",
+    title: "Ongoing Support",
+    desc: "Security patching, backups, and server scaling handled after launch, so you're not on your own.",
     video: "/videos/feature-1.mp4",
   },
 ];
@@ -159,11 +135,11 @@ const STACK = [
   { name: "Next.js", icon: SiNextdotjs, color: "#a1a1aa" },
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38BDF8" },
   { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-  { name: "Shopify", icon: SiShopify, color: "#95BF47" },
-  { name: "WordPress", icon: SiWordpress, color: "#4c9ed9" },
-  { name: "Webflow", icon: SiWebflow, color: "#4353FF" },
+  { name: "React Native", icon: SiReact, color: "#61DAFB" },
+  { name: "Flutter", icon: SiFlutter, color: "#02569B" },
+  { name: "HubSpot", icon: SiHubspot, color: "#FF7A59" },
+  { name: "Salesforce", icon: SiSalesforce, color: "#00A1E0" },
   { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
-  { name: "Framer Motion", icon: SiFramer, color: "#a78bfa" },
   { name: "GSAP", icon: SiGreensock, color: "#88CE02" },
   { name: "Stripe", icon: SiStripe, color: "#635BFF" },
   { name: "Sanity CMS", icon: SiSanity, color: "#F03E2F" },
@@ -175,75 +151,69 @@ const PROCESS = [
     icon: LuSearch,
     color: "#38bdf8",
     title: "Discover",
-    desc: "We learn your business, your customers, and what the site actually needs to achieve.",
+    desc: "We map out what the site needs to do, what the app needs to do, and where they can share a backend.",
   },
   {
     num: "02",
     icon: LuPenTool,
     color: "#a78bfa",
     title: "Design",
-    desc: "Wireframes, then high-fidelity design — built around one clear conversion goal per page.",
+    desc: "Wireframes for every screen — web and mobile — built around how people actually move toward a purchase.",
   },
   {
     num: "03",
     icon: LuCode2,
     color: "#eab308",
     title: "Develop",
-    desc: "Clean, hand-coded builds. Fast, responsive, and structured for SEO from the first commit.",
+    desc: "Next.js on the frontend, React Native or Flutter for mobile, sharing one API wherever it saves you money.",
   },
   {
     num: "04",
-    icon: LuRocket,
+    icon: LuLayers,
     color: "#fb7185",
-    title: "Launch",
-    desc: "QA across devices and browsers, then a smooth, zero-downtime go-live.",
+    title: "Integrate & Optimize",
+    desc: "CRM sync, SEO schema, push notifications — whatever the build needs, wired in and tested before launch.",
   },
   {
     num: "05",
-    icon: LuTrendingUp,
+    icon: LuRocket,
     color: "#34d399",
-    title: "Grow",
-    desc: "Post-launch support, performance monitoring, and iteration based on real user data.",
+    title: "Launch & Support",
+    desc: "App store submission, uptime checks, and a 30-day window to fix anything that turns up after go-live.",
   },
 ];
 
 const STATS = [
-  { value: 50, prefix: "", suffix: "+", decimals: 0, label: "Sites Shipped" },
-  { value: 1.5, prefix: "<", suffix: "s", decimals: 1, label: "Avg. Load Time" },
-  { value: 99, prefix: "", suffix: "%", decimals: 0, label: "Client Satisfaction" },
-  { value: 100, prefix: "", suffix: "%", decimals: 0, label: "Mobile Ready" },
+  { value: 80, prefix: "", suffix: "+", decimals: 0, label: "Platforms Shipped" },
+  { value: 99, prefix: "", suffix: "%", decimals: 0, label: "SEO Speed Score" },
+  { value: 100, prefix: "", suffix: "%", decimals: 0, label: "CRM Lead Sync" },
+  { value: 1.2, prefix: "<", suffix: "s", decimals: 1, label: "Avg. API Load Time" },
 ];
 
 const FAQS = [
   {
     icon: LuClock,
     color: "#38bdf8",
-    q: "How long does a project actually take?",
-    a: "Most sites launch in 2–5 weeks depending on scope. You'll get a fixed timeline before any work starts — no open-ended timelines.",
+    q: "Can you build the website and the app at the same time?",
+    a: "Usually, yes. We build the API and database once, then develop the web frontend and the mobile app against it in parallel — it cuts both the cost and the timeline compared to building them separately.",
   },
   {
-    icon: LuShieldCheck,
+    icon: LuTrendingUp,
     color: "#34d399",
-    q: "Do I own the code and the design when it's done?",
-    a: "Yes — 100%. Once the project is paid in full, the codebase, assets, and design files are yours outright.",
+    q: "How do you handle search engine optimization (SEO)?",
+    a: "Semantic markup, automated metadata, structured data, and a build that passes Core Web Vitals on mobile before we call it finished. No plugins doing the work for us.",
   },
   {
-    icon: LuWrench,
+    icon: LuLayers,
     color: "#fb923c",
-    q: "What if I need changes after launch?",
-    a: "Every project includes a support window post-launch, and we offer month-to-month maintenance plans after that for ongoing changes.",
+    q: "What CRM systems can you integrate with?",
+    a: "We connect directly to HubSpot, Salesforce, Pipedrive, or a database of your choosing using webhooks — no manual exports, no third-party automation tool duct-taped in between.",
   },
   {
     icon: LuLayoutTemplate,
     color: "#a78bfa",
-    q: "Can you work with our existing brand guidelines?",
-    a: "Absolutely — we can build strictly within an existing brand system, or help evolve it if there isn't one yet.",
-  },
-  {
-    icon: LuCode2,
-    color: "#fb7185",
-    q: "What platforms do you build on?",
-    a: "Depends on the goal: hand-coded React/Next.js for custom products, Shopify for e-commerce, WordPress or Webflow for content-heavy sites.",
+    q: "Can I update the app without resubmitting to the App Store?",
+    a: "For content — copy, images, banners, in-app offers — yes. It goes out from a CMS dashboard. Only actual code changes need a new store submission.",
   },
 ];
 
@@ -252,6 +222,12 @@ const WEB_TITLE = [
   { char: "w", bold: false },
   { char: "e", bold: true },
   { char: "b", bold: false },
+  { char: " ", bold: false },
+  { char: "&", bold: true },
+  { char: " ", bold: false },
+  { char: "a", bold: false },
+  { char: "p", bold: true },
+  { char: "p", bold: false },
 ];
 
 const DEV_TITLE = [
@@ -266,6 +242,68 @@ const DEV_TITLE = [
   { char: "e", bold: false },
   { char: "n", bold: true },
   { char: "t", bold: false },
+];
+
+/* Manifest data for the rebuilt "what's included" section */
+const WEB_SCOPE = [
+  {
+    title: "Hand-coded, not drag-and-drop",
+    desc: "Built in React and Next.js from scratch — no page-builder plugins slowing the site down.",
+  },
+  {
+    title: "Loads in under 2 seconds",
+    desc: "Image optimization, code splitting, and caching, so visitors don't bounce before it finishes loading.",
+  },
+  {
+    title: "Ranks from day one",
+    desc: "Meta tags, sitemap, structured data, and clean markup — all in place before launch, not after.",
+  },
+  {
+    title: "Tested on real devices",
+    desc: "Checked on actual phones and tablets, not just a resized browser window.",
+  },
+  {
+    title: "Connected to your CRM",
+    desc: "Every form submission lands in HubSpot, Salesforce, or wherever your sales team already works.",
+  },
+  {
+    title: "30 days of fixes included",
+    desc: "Anything that breaks in the first month after launch gets patched at no extra charge.",
+  },
+];
+
+const APP_SCOPE = [
+  {
+    title: "One codebase, both stores",
+    desc: "React Native or Flutter builds that ship to iOS and Android without duplicating the work twice.",
+  },
+  {
+    title: "Store submission handled",
+    desc: "We prepare the listing, screenshots, and metadata, and manage the App Store and Play Store review.",
+  },
+  {
+    title: "Push notifications built in",
+    desc: "Ready to send from day one, so you can re-engage users who've gone quiet.",
+  },
+  {
+    title: "Works without a signal",
+    desc: "Core screens stay usable offline and sync automatically once the connection comes back.",
+  },
+  {
+    title: "Crash reports land in your inbox",
+    desc: "Firebase Crashlytics or Sentry wired in, so you hear about problems before your users complain.",
+  },
+  {
+    title: "30 days of fixes included",
+    desc: "Same window as the web build — post-launch bugs get patched at no extra charge.",
+  },
+];
+
+const SHARED_SCOPE = [
+  { icon: LuBadgeCheck, title: "You own the code", desc: "Full source handed over. No lock-in, no license fee to keep using it." },
+  { icon: LuLayoutTemplate, title: "Staging link before launch", desc: "See the real build live before anyone else does." },
+  { icon: LuPenTool, title: "One round of revisions", desc: "Included in every quote — not billed as a change order." },
+  { icon: LuMousePointerClick, title: "A direct line to your dev", desc: "A shared Slack channel, not a support ticket queue." },
 ];
 
 /* ────────────────────────────────────────────────────────────────────────
@@ -371,173 +409,22 @@ const DeliverableCard = ({ title, desc, videoSrc, number, color }) => {
   );
 };
 
-const ICON_COLORS = [
-  { text: "#fb7185", bg: "rgba(251, 113, 133, 0.08)", border: "rgba(251, 113, 133, 0.3)" },
-  { text: "#38bdf8", bg: "rgba(56, 189, 248, 0.08)", border: "rgba(56, 189, 248, 0.3)" },
-  { text: "#a78bfa", bg: "rgba(167, 139, 250, 0.08)", border: "rgba(167, 139, 250, 0.3)" },
-  { text: "#34d399", bg: "rgba(52, 211, 153, 0.08)", border: "rgba(52, 211, 153, 0.3)" },
-  { text: "#fb923c", bg: "rgba(251, 146, 60, 0.08)", border: "rgba(251, 146, 60, 0.3)" },
-];
-
-/* 3D card: rests staggered in depth/height (fanned arc, like tilted phone
-   mockups), then on scroll it lifts off, tumbles forward, and settles back
-   into its own resting spot with the solution face now showing. */
-const ThreeDRevolvingCard = ({ pair, index }) => {
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-
-  // Curve rotation to create a 3D curved widescreen layout
-  const defaultRotateY = (index - 2) * 8;
-  // Resting depth/height stagger so cards look like physical objects
-  // fanned out in space rather than a flat identical row.
-  const depthZ = -Math.abs(index - 2) * 50;
-  const restY = Math.abs(index - 2) * 14;
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setTilt({ x: x * 15, y: y * -15 });
-  };
-
-  const handleMouseLeave = () => {
-    setTilt({ x: 0, y: 0 });
-  };
-
-  const colors = ICON_COLORS[index] || ICON_COLORS[0];
-  const Icon = pair.icon;
-
-  return (
-    <div
-      className="relative w-full h-[320px] md:h-[380px] cursor-pointer"
-      style={{ perspective: "1800px" }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div
-        className="w-full h-full relative transition-transform duration-300 ease-out"
-        style={{
-          transformStyle: "preserve-3d",
-          transform: `rotateY(${tilt.x}deg) rotateX(${tilt.y}deg)`,
-        }}
-      >
-        <div
-          className="inner-card w-full h-full relative"
-          data-depth-z={depthZ}
-          data-rest-y={restY}
-          data-default-rotate-y={defaultRotateY}
-          style={{
-            transformStyle: "preserve-3d",
-            transform: `translateZ(${depthZ}px) translateY(${restY}px) rotateY(${defaultRotateY}deg)`,
-            boxShadow: `0 ${20 + Math.abs(index - 2) * 4}px 40px rgba(0, 0, 0, 0.55)`,
-          }}
-        >
-          {/* FRONT FACE: The Problem */}
-          <div
-            className="absolute inset-0 w-full h-full rounded-2xl p-5 md:p-6 flex flex-col justify-between border border-[#401616] bg-gradient-to-br from-[#200a0a] via-[#0d0505] to-[#050202] overflow-hidden"
-            style={{
-              backfaceVisibility: "hidden",
-              transform: "rotateY(0deg)",
-              boxShadow: "0 15px 30px rgba(0, 0, 0, 0.6)",
-            }}
-          >
-            {/* Glossy sweep to sell the 3D-object feel */}
-            <div
-              className="absolute inset-0 pointer-events-none opacity-40"
-              style={{
-                background:
-                  "linear-gradient(120deg, rgba(255,255,255,0.06) 0%, transparent 35%)",
-              }}
-            />
-
-            {/* Watermark Icon */}
-            <div
-              className="absolute right-[-15px] bottom-[-15px] z-0 select-none pointer-events-none text-[8rem] opacity-[0.03] transition-transform duration-500 group-hover:scale-110"
-              style={{ color: colors.text }}
-            >
-              <Icon />
-            </div>
-
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-4">
-                <span
-                  className="flex size-10 items-center justify-center rounded-xl border transition-all duration-300 animate-pulse"
-                  style={{
-                    borderColor: colors.border,
-                    backgroundColor: colors.bg,
-                    color: colors.text,
-                    boxShadow: `0 0 15px ${colors.text}15`,
-                  }}
-                >
-                  <Icon className="text-lg" />
-                </span>
-                <span className="font-general text-[9px] uppercase tracking-widest text-white/30">
-                  Problem {index + 1}
-                </span>
-              </div>
-              <p className="font-general text-[9px] uppercase tracking-[0.2em] text-red-400/60 mb-1">
-                Where sites fall short
-              </p>
-              <h3 className="font-circular-web text-base md:text-lg font-bold text-white/95 leading-snug">
-                {pair.problem}
-              </h3>
-            </div>
-            <div className="relative z-10 text-left">
-              <span className="text-[9px] font-general uppercase tracking-wider text-white/20">
-                Hover to tilt card
-              </span>
-            </div>
-          </div>
-
-          {/* BACK FACE: The Solution */}
-          <div
-            className="absolute inset-0 w-full h-full rounded-2xl p-5 md:p-6 flex flex-col justify-between border border-[#164028] bg-gradient-to-br from-[#0a2014] via-[#050d09] to-[#020503] overflow-hidden"
-            style={{
-              backfaceVisibility: "hidden",
-              transform: "rotateY(180deg)",
-              boxShadow: "0 15px 30px rgba(0, 0, 0, 0.6)",
-            }}
-          >
-            {/* Glossy sweep to sell the 3D-object feel */}
-            <div
-              className="absolute inset-0 pointer-events-none opacity-40"
-              style={{
-                background:
-                  "linear-gradient(120deg, rgba(255,255,255,0.06) 0%, transparent 35%)",
-              }}
-            />
-
-            {/* Watermark Icon */}
-            <div className="absolute right-[-15px] bottom-[-15px] z-0 select-none pointer-events-none text-[8rem] opacity-[0.03] text-emerald-400">
-              <LuBadgeCheck />
-            </div>
-
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-4">
-                <span className="flex size-10 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
-                  <LuBadgeCheck className="text-lg" />
-                </span>
-                <span className="font-general text-[9px] uppercase tracking-widest text-emerald-400/40">
-                  Solution {index + 1}
-                </span>
-              </div>
-              <p className="font-general text-[9px] uppercase tracking-[0.2em] text-emerald-400/80 mb-1">
-                What we build instead
-              </p>
-              <h3 className="font-circular-web text-base md:text-lg font-bold text-emerald-50 leading-snug">
-                {pair.fix}
-              </h3>
-            </div>
-            <div className="relative z-10 text-left">
-              <span className="text-[9px] font-general uppercase tracking-wider text-emerald-400/60">
-                Engineered to scale
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+const ScopeItem = ({ item, accent }) => (
+  <li className="flex gap-3 border-t border-white/10 py-4 first:border-t-0">
+    <LuBadgeCheck
+      className="mt-0.5 shrink-0 text-base"
+      style={{ color: accent }}
+    />
+    <div>
+      <p className="font-circular-web text-sm font-semibold text-white">
+        {item.title}
+      </p>
+      <p className="mt-1 font-robert-regular text-[13px] leading-relaxed text-white/45">
+        {item.desc}
+      </p>
     </div>
-  );
-};
+  </li>
+);
 
 const FaqItem = ({ item, isOpen, onClick }) => {
   const Icon = item.icon;
@@ -578,12 +465,14 @@ const FaqItem = ({ item, isOpen, onClick }) => {
           +
         </span>
       </button>
+
       <div
-        className="grid overflow-hidden transition-all duration-300 ease-out"
-        style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+        className={`grid transition-all duration-300 ease-in-out ${
+          isOpen ? "grid-rows-[1fr] opacity-100 mb-6" : "grid-rows-[0fr] opacity-0"
+        }`}
       >
         <div className="overflow-hidden">
-          <p className="max-w-2xl pb-6 pl-[3.25rem] font-robert-regular text-sm leading-relaxed text-white/45">
+          <p className="font-robert-regular text-sm leading-relaxed text-white/50 pr-8">
             {item.a}
           </p>
         </div>
@@ -593,17 +482,18 @@ const FaqItem = ({ item, isOpen, onClick }) => {
 };
 
 /* ────────────────────────────────────────────────────────────────────────
-   PAGE
+   PAGE ASSEMBLY
    ──────────────────────────────────────────────────────────────────────── */
 
 const WebDevelopment = () => {
-  const [openFaq, setOpenFaq] = useState(0);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [openFaq, setOpenFaq] = useState(-1);
+
   const timelineRef = useRef(null);
-  const cardsContainerRef = useRef(null);
   const sectionRef = useRef(null);
 
   useGSAP(() => {
+    // Zoom background video on scroll
     gsap.set("#wd-hero-frame", {
       clipPath: "polygon(14% 0, 72% 0, 88% 90%, 0 95%)",
       borderRadius: "0% 0% 40% 10%",
@@ -620,136 +510,25 @@ const WebDevelopment = () => {
       },
     });
 
-    // Master Timeline for Pinning and Revolving Cards
-    if (cardsContainerRef.current && sectionRef.current) {
-      const isDesktop = window.innerWidth >= 768;
-
-      if (isDesktop) {
-        const cards = gsap.utils.toArray(cardsContainerRef.current.querySelectorAll(".inner-card"));
-
-        // Step 1: Position cards initially in a flat horizontal row
-        cards.forEach((card, index) => {
-          const defaultRotateY = (index - 2) * 8;
-          const initialX = (index - 2) * 220; // flat spacing
-          gsap.set(card, {
-            x: initialX,
-            y: 0,
-            z: 0,
-            rotateY: defaultRotateY,
-          });
-        });
-
-        // Step 2: Master Timeline
-        const tl = gsap.timeline({
+    // Scroll reveal fade-in for the scope-of-work panels
+    const cards = gsap.utils.toArray(".outcome-card");
+    cards.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
           scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "+=1800", // slightly longer duration to enjoy the spin
-            scrub: 1.5,
-            pin: true,
-            anticipatePin: 1,
-          },
-        });
-
-        const radius = 320; // Expanded 3D ring radius to prevent overlapping
-
-        // A. Morph from flat row to 3D Ring (cards lift and organize in circle, facing forward)
-        cards.forEach((card, index) => {
-          const angle = index * 72; // 5 cards = 72 deg spacing
-          const ringX = radius * Math.sin((angle * Math.PI) / 180);
-          const ringZ = radius * Math.cos((angle * Math.PI) / 180);
-          const defaultRotateY = (index - 2) * 8;
-
-          tl.to(
-            card,
-            {
-              x: ringX,
-              y: -80, // lift up together in the air
-              z: ringZ,
-              rotateY: defaultRotateY, // keep facing forward to show Problems
-              ease: "power2.inOut",
-              duration: 1.2,
-            },
-            0
-          );
-        });
-
-        // B. Spin/Orbit the cards 360 degrees while remaining billboarded to camera
-        const orbitData = { angleOffset: 0 };
-        tl.to(
-          orbitData,
-          {
-            angleOffset: 360,
-            ease: "none",
-            duration: 2.5,
-            onUpdate: () => {
-              cards.forEach((card, index) => {
-                const baseAngle = index * 72;
-                const currentAngle = baseAngle + orbitData.angleOffset;
-                const ringX = radius * Math.sin((currentAngle * Math.PI) / 180);
-                const ringZ = radius * Math.cos((currentAngle * Math.PI) / 180);
-
-                gsap.set(card, {
-                  x: ringX,
-                  z: ringZ,
-                });
-              });
-            }
-          },
-          1.2
-        );
-
-        // C. Settle cards back to flat row, but flipped to solutions face (180 deg)
-        cards.forEach((card, index) => {
-          const finalX = (index - 2) * 220;
-          const finalRotateY = 180 + (index - 2) * 8;
-
-          tl.to(
-            card,
-            {
-              x: finalX,
-              y: 0, // land back down
-              z: 0,
-              rotateY: finalRotateY,
-              ease: "power2.inOut",
-              duration: 1.2,
-            },
-            3.7
-          );
-        });
-      } else {
-        // Mobile: Flip cards individually as they scroll past center
-        const cards = gsap.utils.toArray(
-          sectionRef.current.querySelectorAll(".mobile-card-wrapper .inner-card")
-        );
-        cards.forEach((card, index) => {
-          const defaultRotateY = (index - 2) * 8;
-          gsap
-            .timeline({
-              scrollTrigger: {
-                trigger: card.closest(".mobile-card-item"),
-                start: "top 45%",
-                end: "bottom 30%",
-                scrub: 1.5,
-              },
-            })
-            .to(card, {
-              y: -40,
-              z: 100,
-              rotateY: defaultRotateY + 180,
-              scale: 1.05,
-              ease: "power1.inOut",
-            })
-            .to(card, {
-              y: 0,
-              z: 0,
-              rotateY: defaultRotateY + 180,
-              scale: 1,
-              ease: "power1.inOut",
-            });
-        });
-      }
-    }
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+    });
 
     // Timeline progress line fills in as the process section scrolls by
     if (timelineRef.current) {
@@ -793,7 +572,7 @@ const WebDevelopment = () => {
           <div className="absolute inset-0 z-40 flex flex-col justify-between px-3 md:px-10 pb-10 pt-28">
             <div className="flex items-center justify-between">
               <span className="font-general text-[9px] uppercase tracking-[0.2em] text-white/50">
-                Service · Web Development
+                Service · Web & App Development
               </span>
               <span className="font-general text-[9px] uppercase tracking-[0.2em] text-white/50">
                 Scroll to explore
@@ -802,7 +581,7 @@ const WebDevelopment = () => {
 
             <div className="flex flex-col">
               <p className="font-general text-xs uppercase tracking-[0.2em] text-[#D4AF37] opacity-0 animate-[fadeIn_0.8s_ease_0.2s_forwards]">
-                Websites, engineered
+                One Team, Both Platforms
               </p>
 
               {/* Typewriter staggered header like home page */}
@@ -832,16 +611,16 @@ const WebDevelopment = () => {
                       char={l.char}
                       bold={l.bold}
                       trigger={videoLoaded}
-                      delay={240 + i * 80}
+                      delay={400 + i * 80}
                     />
                   ))}
                 </h1>
               </div>
 
               <p className="mt-6 max-w-lg font-robert-regular text-sm leading-relaxed text-white/60 opacity-0 animate-[fadeIn_0.9s_ease_0.7s_forwards] sm:text-base">
-                We design and build websites that load fast, look sharp on
-                every screen, and turn visitors into customers — not just
-                another portfolio piece.
+                We build the website and the app — same team, one shared backend where it
+                makes sense, one point of contact for both. Built to rank on Google, built to
+                pass app store review, and wired into the CRM your sales team already uses.
               </p>
 
               <div className="mt-7 flex flex-wrap gap-3 opacity-0 animate-[fadeIn_0.9s_ease_0.9s_forwards]">
@@ -872,14 +651,14 @@ const WebDevelopment = () => {
           <Reveal className="text-center flex flex-col items-center">
             <Eyebrow>What's included</Eyebrow>
             <AnimatedTitle
-              title="Everything a modern <br /> website needs."
+              title="Everything a modern <br /> web & app system needs."
               containerClass="mt-4"
             />
           </Reveal>
 
           {/* Asymmetrical Bento Grid matching Features layout structure */}
           <div className="mt-16 grid gap-6 md:grid-cols-6 md:grid-rows-2">
-            {/* Card 1: Custom Design - col-span-3 row-span-2 */}
+            {/* Card 1: Web Apps & Sites - col-span-3 row-span-2 */}
             <div className="md:col-span-3 md:row-span-2">
               <DeliverableCard
                 title={DELIVERABLES[0].title}
@@ -890,7 +669,7 @@ const WebDevelopment = () => {
               />
             </div>
 
-            {/* Card 2: Fully Responsive - col-span-3 row-span-1 */}
+            {/* Card 2: iOS & Android Apps - col-span-3 row-span-1 */}
             <div className="md:col-span-3 md:row-span-1">
               <DeliverableCard
                 title={DELIVERABLES[1].title}
@@ -901,7 +680,7 @@ const WebDevelopment = () => {
               />
             </div>
 
-            {/* Card 3: Performance - col-span-3 row-span-1 */}
+            {/* Card 3: SEO Optimization - col-span-3 row-span-1 */}
             <div className="md:col-span-3 md:row-span-1">
               <DeliverableCard
                 title={DELIVERABLES[2].title}
@@ -912,7 +691,7 @@ const WebDevelopment = () => {
               />
             </div>
 
-            {/* Card 4: SEO - col-span-2 row-span-1 */}
+            {/* Card 4: CRM Pipeline Sync - col-span-2 row-span-1 */}
             <div className="md:col-span-2 md:row-span-1">
               <DeliverableCard
                 title={DELIVERABLES[3].title}
@@ -923,7 +702,7 @@ const WebDevelopment = () => {
               />
             </div>
 
-            {/* Card 5: CMS - col-span-2 row-span-1 */}
+            {/* Card 5: Content Management - col-span-2 row-span-1 */}
             <div className="md:col-span-2 md:row-span-1">
               <DeliverableCard
                 title={DELIVERABLES[4].title}
@@ -934,7 +713,7 @@ const WebDevelopment = () => {
               />
             </div>
 
-            {/* Card 6: Support - col-span-2 row-span-1 */}
+            {/* Card 6: Ongoing Support - col-span-2 row-span-1 */}
             <div className="md:col-span-2 md:row-span-1">
               <DeliverableCard
                 title={DELIVERABLES[5].title}
@@ -948,7 +727,7 @@ const WebDevelopment = () => {
         </div>
       </section>
 
-      {/* ── STATS + TESTIMONIAL (Social Proof Restructured Here) ─────────── */}
+      {/* ── STATS + IMPACT (Social Proof Restructured Here) ─────────── */}
       <section className="bg-[#06060a] px-3 md:px-10 py-24 border-t border-white/5">
         <div className="container mx-auto">
           <div className="grid grid-cols-2 gap-8 border-b border-white/10 pb-16 md:grid-cols-4">
@@ -965,63 +744,104 @@ const WebDevelopment = () => {
             ))}
           </div>
 
-          <Reveal delay={0.1} className="mx-auto mt-16 max-w-3xl text-center">
-            <p className="font-circular-web text-xl leading-relaxed text-blue-50 sm:text-2xl">
-              "They rebuilt our site in three weeks. Load time dropped,
-              bounce rate dropped, and our contact form has never been busier."
-            </p>
-            <p className="mt-6 font-general text-[10px] uppercase tracking-[0.2em] text-white/35">
-              — Operations Lead, D2C Retail Brand
-            </p>
-          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-5xl mx-auto">
+            {IMPACT_STATS.map((stat, i) => {
+              const StatIcon = stat.icon;
+              return (
+                <Reveal key={i} delay={0.1 + i * 0.05} className="flex flex-col items-center text-center p-6 border border-white/5 rounded-2xl bg-white/[0.01]">
+                  <span className="size-12 rounded-full border border-white/10 flex items-center justify-center mb-4" style={{ color: stat.color }}>
+                    <StatIcon className="text-xl" />
+                  </span>
+                  <h4 className="font-zentry text-3xl font-black text-white">
+                    {stat.value}{stat.suffix}
+                  </h4>
+                  <p className="mt-3 font-robert-regular text-xs text-white/50 leading-relaxed max-w-[240px]">
+                    {stat.label}
+                  </p>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* ── PROBLEM / FIX (The Reality) ────────────────────────────────── */}
+      {/* ── SCOPE OF WORK: WEB BUILD vs APP BUILD ───────────────────────── */}
       <section
         ref={sectionRef}
-        className="relative z-10 min-h-screen md:h-screen flex flex-col justify-center bg-black px-3 md:px-10 py-4 overflow-hidden"
+        className="relative z-10 bg-black px-3 md:px-10 py-24 md:py-36 border-t border-white/5"
       >
-        <div className="container mx-auto pt-24 md:pt-28">
-          <Reveal className="text-center flex flex-col items-center">
-            <Eyebrow className="text-center">The reality</Eyebrow>
+        <div className="container mx-auto max-w-6xl">
+          <Reveal className="text-center flex flex-col items-center mb-16">
+            <Eyebrow className="text-center">Scope of work</Eyebrow>
             <AnimatedTitle
-              title="Most business websites <br /> are quietly losing money."
+              title="Exactly what's <br /> included. No filler."
               containerClass="mt-4"
             />
+            <p className="mt-6 max-w-lg font-robert-regular text-sm text-white/40 leading-relaxed">
+              Two build tracks, laid out plainly. Pick one or run both — the list below is
+              what actually ships, not a pitch.
+            </p>
           </Reveal>
 
-          {/* Desktop: 3D Ring-Row Morphing Carousel */}
-          <div 
-            ref={cardsContainerRef} 
-            className="hidden md:block relative w-full h-[380px] max-w-5xl mx-auto mt-12"
-            style={{ perspective: "1500px", transformStyle: "preserve-3d" }}
-          >
-            <div 
-              className="absolute inset-0 card-ring-wrapper" 
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              {PROBLEM_FIX_PAIRS.map((pair, i) => (
-                <div
-                  key={pair.problem}
-                  className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-[380px]"
-                  style={{
-                    transformStyle: "preserve-3d",
-                  }}
+          {/* Web / App split manifest */}
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="outcome-card border border-white/10 rounded-3xl bg-[#050507] p-8">
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="font-circular-web text-xl font-bold text-white">
+                  Web Build
+                </h4>
+                <span
+                  className="text-[10px] font-general uppercase tracking-widest px-3 py-1 rounded-full border"
+                  style={{ color: "#D4AF37", borderColor: "#D4AF3740", backgroundColor: "#D4AF3712" }}
                 >
-                  <ThreeDRevolvingCard pair={pair} index={i} />
-                </div>
-              ))}
+                  React / Next.js
+                </span>
+              </div>
+              <ul>
+                {WEB_SCOPE.map((item) => (
+                  <ScopeItem key={item.title} item={item} accent="#D4AF37" />
+                ))}
+              </ul>
+            </div>
+
+            <div className="outcome-card border border-white/10 rounded-3xl bg-[#050507] p-8">
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="font-circular-web text-xl font-bold text-white">
+                  App Build
+                </h4>
+                <span
+                  className="text-[10px] font-general uppercase tracking-widest px-3 py-1 rounded-full border"
+                  style={{ color: "#38bdf8", borderColor: "#38bdf840", backgroundColor: "#38bdf812" }}
+                >
+                  React Native / Flutter
+                </span>
+              </div>
+              <ul>
+                {APP_SCOPE.map((item) => (
+                  <ScopeItem key={item.title} item={item} accent="#38bdf8" />
+                ))}
+              </ul>
             </div>
           </div>
 
-          {/* Mobile: Standard Grid stack */}
-          <div className="block md:hidden mobile-card-wrapper grid grid-cols-1 gap-6 mt-8 max-w-md mx-auto">
-            {PROBLEM_FIX_PAIRS.map((pair, i) => (
-              <div key={pair.problem} className="mobile-card-item">
-                <ThreeDRevolvingCard pair={pair} index={i} />
-              </div>
-            ))}
+          {/* Shared services strip */}
+          <div className="outcome-card mt-6 grid grid-cols-1 gap-6 rounded-3xl border border-white/10 bg-[#050507] p-8 sm:grid-cols-2 md:grid-cols-4">
+            {SHARED_SCOPE.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.title} className="flex flex-col gap-3">
+                  <Icon className="text-lg text-white/60" />
+                  <div>
+                    <p className="font-circular-web text-sm font-semibold text-white">
+                      {item.title}
+                    </p>
+                    <p className="mt-1 font-robert-regular text-[13px] leading-relaxed text-white/40">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -1117,7 +937,7 @@ const WebDevelopment = () => {
                 containerClass="mt-4 faq-left-title !text-5xl md:!text-6xl !leading-[0.9]"
               />
               <p className="mt-6 max-w-sm font-robert-regular text-sm leading-relaxed text-white/40">
-                Have a question about deliverables, timelines, or technologies? Check our general responses here or reach out directly.
+                Have a question about deliverables, timelines, web SEO configurations, or CRM pipelines? Check our responses here.
               </p>
             </Reveal>
           </div>

@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
+import { LuArrowRight } from "react-icons/lu";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +21,7 @@ const MILESTONES = [
     afterCat: "Website Development",
     after: "Website Development",
     afterSub: "Fast, modern websites built to convert.",
+    link: "/services/development"
   },
   {
     id: "brand", cy: 900, side: "left",
@@ -28,6 +31,7 @@ const MILESTONES = [
     afterCat: "Branding",
     after: "Branding",
     afterSub: "Build a brand people remember.",
+    link: "/services/social-media-marketting"
   },
   {
     id: "marketing", cy: 1300, side: "right",
@@ -37,6 +41,7 @@ const MILESTONES = [
     afterCat: "Digital Marketing",
     after: "Digital Marketing",
     afterSub: "SEO, ads and content that drive growth.",
+    link: "/services/social-media-marketting"
   },
   {
     id: "social", cy: 1700, side: "left",
@@ -46,6 +51,7 @@ const MILESTONES = [
     afterCat: "Social Media",
     after: "Social Media",
     afterSub: "Stay visible. Stay relevant.",
+    link: "/services/social-media-marketting"
   },
   {
     id: "mobile", cy: 2100, side: "right",
@@ -55,6 +61,7 @@ const MILESTONES = [
     afterCat: "Mobile App Development",
     after: "Mobile App Development",
     afterSub: "Beautiful apps for every device.",
+    link: "/services/development"
   },
   {
     id: "video", cy: 2500, side: "left",
@@ -64,6 +71,7 @@ const MILESTONES = [
     afterCat: "Video Editing",
     after: "Video Editing",
     afterSub: "Content that captures attention.",
+    link: "/services/social-media-marketting"
   },
   {
     id: "crm", cy: 2900, side: "right",
@@ -73,6 +81,7 @@ const MILESTONES = [
     afterCat: "CRM & Automation",
     after: "CRM & Automation",
     afterSub: "Automate your business, not your effort.",
+    link: "/services/development"
   },
 ];
 
@@ -576,7 +585,14 @@ const PCBJourney = () => {
                   <div className="w-[48%] flex flex-col justify-center">
                     <span className="font-general editorial-eyebrow">{m.before}</span>
                     <h2 className="special-font font-zentry editorial-title">{m.after}</h2>
-                    <p className="font-robert-regular editorial-desc">{m.afterSub}</p>
+                    <p className="font-robert-regular editorial-desc mb-3">{m.afterSub}</p>
+                    <Link
+                      to={m.link}
+                      className="inline-flex w-fit items-center gap-1.5 rounded-full bg-[#D4AF37] px-4 py-1.5 text-[9px] font-general uppercase tracking-widest text-black font-bold hover:bg-white hover:scale-105 transition-all duration-300 pointer-events-auto"
+                    >
+                      <span>Explore</span>
+                      <LuArrowRight className="text-xs" />
+                    </Link>
                   </div>
                   
                   {/* Right Side: Floating Premium 3D Art */}

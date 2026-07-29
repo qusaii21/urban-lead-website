@@ -721,6 +721,52 @@ const FAQSection = () => {
   );
 };
 
+/* ── Typewriter Animation Component ───────────────────────────── */
+const HeroTypewriter = () => {
+  const words = ["Digital Marketing", "Branding", "Social Media Strategy"];
+  const [wordIndex, setWordIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(70);
+
+  useEffect(() => {
+    let timer;
+    const fullWord = words[wordIndex];
+
+    if (!isDeleting) {
+      timer = setTimeout(() => {
+        setCurrentText(fullWord.substring(0, currentText.length + 1));
+      }, typingSpeed);
+
+      if (currentText === fullWord) {
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+          setTypingSpeed(45); // Delete faster
+        }, 1200);
+      }
+    } else {
+      timer = setTimeout(() => {
+        setCurrentText(fullWord.substring(0, currentText.length - 1));
+      }, typingSpeed);
+
+      if (currentText === "") {
+        setIsDeleting(false);
+        setWordIndex((prev) => (prev + 1) % words.length);
+        setTypingSpeed(70);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, wordIndex]);
+
+  return (
+    <span className="relative">
+      <span className="text-white font-zentry font-black">{currentText}</span>
+      <span className="inline-block w-[3px] h-[0.9em] bg-white ml-1 animate-[blink_0.8s_infinite] align-middle" />
+    </span>
+  );
+};
+
 /* ────────────────────────────────────────────────────────────────────────
    MAIN PAGE
    ──────────────────────────────────────────────────────────────────────── */
@@ -800,13 +846,18 @@ const CreativeGrowth = () => {
             </span>
           </div>
 
-          <div className="relative z-10 my-auto text-center pointer-events-none flex flex-col items-center">
+          <div className="relative z-10 my-auto text-center pointer-events-none flex flex-col items-center w-full px-2">
             <p className="font-general text-[10px] uppercase tracking-[0.2em] text-[#ff4f12] mb-3">
               Compound Traction
             </p>
-            
-            <h1 className="font-zentry text-5xl sm:text-7xl font-black text-white leading-none tracking-tighter uppercase">
-              CREATIVE <br /> GROWTH
+            <style dangerouslySetInnerHTML={{__html: `
+              @keyframes blink {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0; }
+              }
+            `}} />
+            <h1 className="font-zentry text-3xl sm:text-5xl font-black text-white leading-tight tracking-wide uppercase min-h-[120px] sm:min-h-[140px] flex items-center justify-center text-center w-full">
+              <HeroTypewriter />
             </h1>
           </div>
 

@@ -76,26 +76,67 @@ const NavBar = () => {
               <img src="/img/logo.png" alt="logo" className="w-16 h-auto" />
             </Link>
 
-            <Button
-              id="product-button"
-              title="Start a Project"
-              rightIcon={<TiLocationArrow />}
-              containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-            />
+            <Link to="/contact">
+              <Button
+                id="product-button"
+                title="Start a Project"
+                rightIcon={<TiLocationArrow />}
+                containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
+              />
+            </Link>
           </div>
 
           {/* Navigation Links and Audio Button */}
           <div className="flex h-full items-center">
-            <div className="hidden md:block">
-              {navItems.map((item, index) => (
-                <a
-                  key={index}
-                  href={`/#${item.toLowerCase()}`}
-                  className="nav-hover-btn"
-                >
-                  {item}
-                </a>
-              ))}
+            <div className="hidden md:flex items-center gap-6">
+              {navItems.map((item, index) => {
+                if (item === "Services") {
+                  return (
+                    <div key={index} className="relative group h-full flex items-center py-2">
+                      <button className="nav-hover-btn flex items-center gap-1 cursor-pointer select-none">
+                        <span>{item}</span>
+                        <span className="text-[8px] opacity-60 group-hover:rotate-180 transition-transform duration-300">▼</span>
+                      </button>
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 hidden group-hover:flex flex-col gap-1 rounded-xl border border-white/10 bg-black/95 p-3 min-w-[180px] shadow-2xl backdrop-blur-md z-50">
+                        <Link
+                          to="/services/development"
+                          className="text-[10px] font-general uppercase tracking-widest text-white/50 hover:text-[#D4AF37] transition-colors py-2 px-3 rounded-lg hover:bg-white/[0.03] block text-left"
+                        >
+                          Web and App Development
+                        </Link>
+                        <Link
+                          to="/services/social-media-marketting"
+                          className="text-[10px] font-general uppercase tracking-widest text-white/50 hover:text-[#D4AF37] transition-colors py-2 px-3 rounded-lg hover:bg-white/[0.03] block text-left"
+                        >
+                          Marketing
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                }
+
+                if (item === "Contact") {
+                  return (
+                    <Link
+                      key={index}
+                      to="/contact"
+                      className="nav-hover-btn"
+                    >
+                      {item}
+                    </Link>
+                  );
+                }
+
+                return (
+                  <a
+                    key={index}
+                    href={`/#${item.toLowerCase()}`}
+                    className="nav-hover-btn"
+                  >
+                    {item}
+                  </a>
+                );
+              })}
             </div>
 
             <button

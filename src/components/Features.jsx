@@ -116,12 +116,12 @@ const Features = () => (
           src="videos/feature-1.mp4"
           title={
             <>
-              web desi<b>g</b>n
+              dev<b>e</b>lopme<b>n</b>t
             </>
           }
-          description="Responsive websites, landing pages, e-commerce platforms, and custom web applications — engineered for performance and built to convert."
+          description="Bespoke web applications, native iOS/Android mobile apps, advanced search engine optimization (SEO), and Salesforce/HubSpot CRM data integrations."
           isComingSoon
-          href="/services/web-development"
+          href="/services/development"
         />
       </BentoTilt>
 
